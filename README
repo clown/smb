@@ -1,0 +1,107 @@
+/* ------------------------------------------------------------------------- */
+/*
+ *  smb
+ *
+ *  Copyright (c) 2011, clown.
+ *
+ *  Redistribution and use in source and binary forms, with or without
+ *  modification, are permitted provided that the following conditions
+ *  are met:
+ *
+ *    - Redistributions of source code must retain the above copyright
+ *      notice, this list of conditions and the following disclaimer.
+ *    - Redistributions in binary form must reproduce the above copyright
+ *      notice, this list of conditions and the following disclaimer in the
+ *      documentation and/or other materials provided with the distribution.
+ *    - No names of its contributors may be used to endorse or promote
+ *      products derived from this software without specific prior written
+ *      permission.
+ *
+ *  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+ *  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+ *  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+ *  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+ *  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ *  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
+ *  TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR
+ *  PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+ *  LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
+ *  NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ *  SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+/* ------------------------------------------------------------------------- */
+
+* What's this?
+
+smb は様々な Web サービスが提供しているソーシャル（メディア）ボタンと呼ばれる
+ボタンを表示させるための JavaScript ライブラリです．現在，Twitter, Facebook,
+Tumblr, はてなブックマーク, Delicious, livedoor クリップ, Yahoo! ブックマーク,
+Buzzurl, Google Bookmarks, newsing, あとで読む, GREE, Evernote の各種ソーシャル
+ボタンに対応しています．
+
+ライブラリ内で一部 MD5 ハッシュ値を計算する必要がありますが，
+MD5 のハッシュ値の計算には CybozuLabs.MD5 を利用させて頂きました．
+http://labs.cybozu.co.jp/blog/mitsunari/2007/07/md5js_1.html
+
+詳細は以下の URL を参照下さい．
+http://cielquis.net/smb/index.html
+
+* Usage
+
+<script type="text/javascript" src="md5.js"></script>
+<script type="text/javascript" src="smb.js"></script>
+
+ヘッダで上記のように smb.js を（場合によっては md5.js も）ロードした後， 
+ソーシャルボタンを表示させたい箇所で以下のように記述して下さい（option は
+省略可）．
+
+smb.show(kind, option);
+
+kind には，以下のリストの中から表示したいソーシャルボタンを指定します．
+kind は "|" （OR 演算子）で複数指定する事が可能です．
+
+ - smb.twitter ..... Twitter (http://twitter.com/)
+ - smb.facebook ..... Facebook (http://www.facebook.com/)
+ - smb.tumblr ..... Tumblr (http://www.tumblr.com/)
+ - smb.hatena ..... はてなブックマーク (http://b.hatena.ne.jp/)
+ - smb.delicious ..... Delicious (http://www.delicious.com/)
+ - smb.livedoor ..... livedoor クリップ (http://clip.livedoor.com/)
+ - smb.yahoo ..... Yahoo! ブックマーク (http://bookmarks.yahoo.co.jp/)
+ - smb.buzzurl .....Buzzurl (http://buzzurl.jp/ )
+ - smb.google ..... Google Bookmarks (http://www.google.com/bookmarks/)
+ - smb.newsing ..... newsing (http://newsing.jp/)
+ - smb.atode ..... あとで読む (http://atode.cc/)
+ - smb.gree ..... GREE (http://gree.jp/)
+ - smb.evernote ..... Evernote (http://www.evernote.com/)
+
+option には，現在，以下の 2 つを指定する事ができます．
+両方指定する場合には "|" （OR 演算子）で結合して下さい．
+
+ - smb.detail ..... 詳細表示を行う．例えば SBM の場合には，ブックマーク数も
+   併せて表示します． ただし，該当 Web サービスがブックマーク数を表示する機能を
+   提供していないなどの理由で， smb.detail を指定しても表示が変化しないボタンも
+   存在します．
+ - smb.showentry ..... 各ソーシャルボタンをクリックした時の動作を
+   「ブックマークする」 から「該当エントリのブックマークページを表示する」に
+   変更します． ただし，こちらも実際に動作を変更できるかどうかは提供元の
+   Web サービスに依存します．
+
+ソーシャルボタンは，第 1 引数の指定順序に関係なく特定の順序で表示されます．
+順序を変えたい場合は，smb.show() を複数回コールするなどして対応して下さい．
+
+* History
+
+2011/05/10 version 0.1.2
+ - Tumblr 共有ボタンを追加．
+ - 2011/04/02 version 0.1.1
+ - @nifty クリップのサービス終了 に伴い削除．
+2011/02/22 version 0.1.0
+ - smb.show() のインターフェースを変更．
+ - ボタンをクリックしたときの動作を選択できるように変更．
+ - Google Bookmarks，@nifty クリップ，あとで読むを追加．
+2011/02/21 version 0.0.2
+ - MD5 ライブラリがロードされなかった場合のエラー処理を追加．
+ - 簡易表示モードの場合の GREE ソーシャルボタンの表示を変更．
+ - newsing ボタンをクリックした時の動作を変更．
+2011/02/20 version 0.0.1
+ - 最初の公開バージョン．
