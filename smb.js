@@ -41,21 +41,22 @@ var smb = new function() {
     //  kinds
     /* --------------------------------------------------------------------- */
     var kinds = {
-        twitter    : 0x0001, // http://twitter.com/
-        facebook   : 0x0002, // http://www.facebook.com/
-        hatena     : 0x0004, // http://b.hatena.ne.jp/
-        hatena_old : 0x0008, // http://b.hatena.ne.jp/
-        delicious  : 0x0010, // http://www.delicious.com/
-        livedoor   : 0x0020, // http://clip.livedoor.com/
-        yahoo      : 0x0040, // http://bookmarks.yahoo.co.jp/
-        buzzurl    : 0x0080, // http://buzzurl.jp/
-        evernote   : 0x0100, // http://www.evernote.com/
-        newsing    : 0x0200, // http://newsing.jp/
-        gree       : 0x0400, // http://gree.jp/
-        nifty      : 0x0800, // サービス終了
-        atode      : 0x1000, // http://news.atode.cc/
-        google     : 0x2000, // http://www.google.com/bookmarks/
-        tumblr     : 0x4000, // http://www.tumblr.com/
+        twitter      : 0x0001, // http://twitter.com/
+        facebook     : 0x0002, // http://www.facebook.com/
+        hatena       : 0x0004, // http://b.hatena.ne.jp/
+        hatena_old   : 0x0008, // http://b.hatena.ne.jp/
+        delicious    : 0x0010, // http://www.delicious.com/
+        livedoor     : 0x0020, // http://clip.livedoor.com/
+        yahoo        : 0x0040, // http://bookmarks.yahoo.co.jp/
+        buzzurl      : 0x0080, // http://buzzurl.jp/
+        evernote     : 0x0100, // http://www.evernote.com/
+        newsing      : 0x0200, // http://newsing.jp/
+        gree         : 0x0400, // http://gree.jp/
+        nifty        : 0x0800, // サービス終了
+        atode        : 0x1000, // http://news.atode.cc/
+        google       : 0x2000, // http://www.google.com/bookmarks/
+        tumblr       : 0x4000, // http://www.tumblr.com/
+        google_plus1 : 0x8000, // http://www.google.com/webmasters/+1/button/
     };
     
     /* --------------------------------------------------------------------- */
@@ -88,6 +89,22 @@ var smb = new function() {
     var md5 = function(str) {
         var defined = (typeof CybozuLabs != "undefined") && (typeof CybozuLabs.MD5 != "undefined") && (typeof CybozuLabs.MD5.calc != "undefined");
         return defined ? CybozuLabs.MD5.calc(str) : "";
+    };
+    
+    /* --------------------------------------------------------------------- */
+    /*
+     *  show_google_plus1
+     */
+    /* --------------------------------------------------------------------- */
+    var show_google_plus1 = function(option) {
+        var count = ((option & options.detail) != 0) ? "true" : "false";
+        document.write('<script type="text/javascript" src="http://apis.google.com/js/plusone.js">');
+        document.write('{lang: "ja"}');
+        document.write('</script>');
+        document.write('<g:plusone size="medium" count="' + count + '"></g:plusone>');
+        document.write('<script type="text/javascript">gapi.plusone.go();</script>');
+        
+        if ((option & options.detail) == 0) document.write('<span style="margin-left:' + horizontal + 'px;"></span>');
     };
     
     /* --------------------------------------------------------------------- */
@@ -583,26 +600,27 @@ var smb = new function() {
         /* ----------------------------------------------------------------- */
         //  version
         /* ----------------------------------------------------------------- */
-        version    : "0.1.2",
+        version    : "0.1.3",
         
         /* ----------------------------------------------------------------- */
         //  kinds
         /* ----------------------------------------------------------------- */
-        twitter    : kinds.twitter,
-        facebook   : kinds.facebook,
-        google     : kinds.google,
-        hatena     : kinds.hatena,
-        hatena_old : kinds.hatena_old,
-        delicious  : kinds.delicious,
-        livedoor   : kinds.livedoor,
-        yahoo      : kinds.yahoo,
-        buzzurl    : kinds.buzzurl,
-        nifty      : kinds.nifty,
-        newsing    : kinds.newsing,
-        atode      : kinds.atode,
-        evernote   : kinds.evernote,
-        gree       : kinds.gree,
-        tumblr     : kinds.tumblr,
+        twitter      : kinds.twitter,
+        facebook     : kinds.facebook,
+        google       : kinds.google,
+        hatena       : kinds.hatena,
+        hatena_old   : kinds.hatena_old,
+        delicious    : kinds.delicious,
+        livedoor     : kinds.livedoor,
+        yahoo        : kinds.yahoo,
+        buzzurl      : kinds.buzzurl,
+        nifty        : kinds.nifty,
+        newsing      : kinds.newsing,
+        atode        : kinds.atode,
+        evernote     : kinds.evernote,
+        gree         : kinds.gree,
+        tumblr       : kinds.tumblr,
+        google_plus1 : kinds.google_plus1,
         
         /* ----------------------------------------------------------------- */
         //  options
@@ -641,6 +659,7 @@ var smb = new function() {
             if ((kind & kinds.gree) != 0 && (tmp & options.detail) == 0) show_gree(tmp);
             if ((kind & kinds.atode) != 0 && ((tmp & options.detail) != 0 && (tmp & options.showentry) == 0)) show_atode(tmp);
             if ((kind & kinds.tumblr) != 0) show_tumblr(tmp);
+            if ((kind & kinds.google_plus1) != 0) show_google_plus1(tmp);
             if ((kind & kinds.hatena) != 0) show_hatena(tmp);
             if ((kind & kinds.twitter) != 0) show_twitter(tmp);
             if ((kind & kinds.gree) != 0 && (tmp & options.detail) != 0) show_gree(tmp);
