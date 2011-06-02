@@ -659,8 +659,8 @@ var smb = new function() {
             if ((kind & kinds.gree) != 0 && (tmp & options.detail) == 0) show_gree(tmp);
             if ((kind & kinds.atode) != 0 && ((tmp & options.detail) != 0 && (tmp & options.showentry) == 0)) show_atode(tmp);
             if ((kind & kinds.tumblr) != 0) show_tumblr(tmp);
-            if ((kind & kinds.google_plus1) != 0) show_google_plus1(tmp);
             if ((kind & kinds.hatena) != 0) show_hatena(tmp);
+            if ((kind & kinds.google_plus1) != 0) show_google_plus1(tmp);
             if ((kind & kinds.twitter) != 0) show_twitter(tmp);
             if ((kind & kinds.gree) != 0 && (tmp & options.detail) != 0) show_gree(tmp);
             if ((kind & kinds.facebook) != 0) show_facebook(tmp);
