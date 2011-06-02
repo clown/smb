@@ -36,6 +36,7 @@ kind は "|" （OR 演算子）で複数指定する事が可能です．
  - smb.yahoo ..... Yahoo! ブックマーク (http://bookmarks.yahoo.co.jp/)
  - smb.buzzurl .....Buzzurl (http://buzzurl.jp/ )
  - smb.google ..... Google Bookmarks (http://www.google.com/bookmarks/)
+ - smb.google_plus1 ..... Google +1 (http://www.google.com/webmasters/+1/button/)
  - smb.newsing ..... newsing (http://newsing.jp/)
  - smb.atode ..... あとで読む (http://atode.cc/)
  - smb.gree ..... GREE (http://gree.jp/)
@@ -58,9 +59,11 @@ option には，現在，以下の 2 つを指定する事ができます．
 
 * History
 
+2011/06/02 version 0.1.3
+ - Google +1 ボタンを追加．
 2011/05/10 version 0.1.2
  - Tumblr 共有ボタンを追加．
- - 2011/04/02 version 0.1.1
+2011/04/02 version 0.1.1
  - @nifty クリップのサービス終了 に伴い削除．
 2011/02/22 version 0.1.0
  - smb.show() のインターフェースを変更．
