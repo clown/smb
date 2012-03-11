@@ -250,7 +250,7 @@ var smb = new function() {
         
         document.write('</a>');
         
-        document.write('<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button.js"');
+        document.write('<script type="text/javascript" src="http://b.st-hatena.com/js/bookmark_button_wo_al.js"');
         document.write(' charset="utf-8" async="async"');
         document.write('></script>');
         document.write('<span style="margin-left:' + horizontal + 'px;"></span>');
